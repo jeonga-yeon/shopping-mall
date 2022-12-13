@@ -32,6 +32,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #faf9f8;
 }
 ol, ul {
 	list-style: none;
@@ -47,6 +48,9 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+a {
+	text-decoration: none;
 }
 `;
 
