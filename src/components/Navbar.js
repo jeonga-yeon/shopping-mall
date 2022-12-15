@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div``;
 
@@ -87,7 +87,11 @@ const BottomNav = styled.div`
 `;
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const menuList = ["여성", "남성", "신생아/유아", "아동", "스포츠", "Sale"];
+  const goToLogin = () => {
+    navigate("/login");
+  };
   return (
     <Wrapper>
       <TopNav>
@@ -103,7 +107,7 @@ const Navbar = () => {
           <h1>My Shop</h1>
         </Link>
         <ul className="login-menu">
-          <li>
+          <li onClick={goToLogin}>
             <FontAwesomeIcon icon={faUser} className="menu-icon" />
             <span>로그인</span>
           </li>

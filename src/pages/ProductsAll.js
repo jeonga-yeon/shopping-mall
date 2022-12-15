@@ -6,7 +6,7 @@ import ProductCard from "../components/ProductCard";
 import { productAction } from "../redux/actions/productAction";
 
 const Wrapper = styled.div`
-  margin: 40px 200px;
+  margin: 80px 200px;
 `;
 
 const Products = styled.ul`
