@@ -17,7 +17,7 @@ const Products = styled.ul`
 
 const ProductsAll = () => {
   const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.product.productList);
   useEffect(() => {
     getProducts();
   }, []);

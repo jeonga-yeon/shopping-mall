@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { authenticateAction } from "../redux/actions/authenticateAction";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -41,18 +44,36 @@ const Form = styled.form`
 `;
 
 const Login = () => {
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const login = (event) => {
     event.preventDefault();
+    dispatch(authenticateAction.login(id, password));
+    navigate("/");
   };
   return (
     <Wrapper>
       <Form onSubmit={(event) => login(event)}>
         <label htmlFor="email">Email address</label>
-        <input id="email" type="email" placeholder="email" required />
+        <input
+          id="email"
+          type="email"
+          placeholder="email"
+          required
+          onChange={(event) => setId(event.target.value)}
+        />
         <label htmlFor="password" className="password-label">
           Password
         </label>
-        <input id="password" type="password" placeholder="password" required />
+        <input
+          id="password"
+          type="password"
+          placeholder="password"
+          required
+          onChange={(event) => setPassword(event.target.value)}
+        />
         <button type="submit">로그인</button>
       </Form>
     </Wrapper>

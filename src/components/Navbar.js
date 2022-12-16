@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Wrapper = styled.div``;
 
@@ -89,8 +90,16 @@ const BottomNav = styled.div`
 const Navbar = () => {
   const navigate = useNavigate();
   const menuList = ["여성", "남성", "신생아/유아", "아동", "스포츠", "Sale"];
+  const dispatch = useDispatch();
+  const authenticate = useSelector((state) => state.auth.authenticate);
   const goToLogin = () => {
     navigate("/login");
+  };
+  const goToLogout = () => {
+    dispatch({
+      type: "LOGOUT_SUCCESS",
+    });
+    navigate("/");
   };
   return (
     <Wrapper>
@@ -107,10 +116,17 @@ const Navbar = () => {
           <h1>My Shop</h1>
         </Link>
         <ul className="login-menu">
-          <li onClick={goToLogin}>
-            <FontAwesomeIcon icon={faUser} className="menu-icon" />
-            <span>로그인</span>
-          </li>
+          {authenticate ? (
+            <li onClick={goToLogout}>
+              <FontAwesomeIcon icon={faUser} className="menu-icon" />
+              <span>로그아웃</span>
+            </li>
+          ) : (
+            <li onClick={goToLogin}>
+              <FontAwesomeIcon icon={faUser} className="menu-icon" />
+              <span>로그인</span>
+            </li>
+          )}
           <li>
             <FontAwesomeIcon icon={faHeart} className="menu-icon" />
             <span>즐겨찾기</span>
