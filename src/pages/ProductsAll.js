@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import ProductCard from "../components/ProductCard";
 import { productAction } from "../redux/actions/productAction";
@@ -17,12 +18,13 @@ const Products = styled.ul`
 
 const ProductsAll = () => {
   const dispatch = useDispatch();
+  const [query, setQuery] = useSearchParams();
   const productList = useSelector((state) => state.product.productList);
   useEffect(() => {
     getProducts();
-  }, []);
-  const getProducts = async () => {
-    dispatch(productAction.getProducts());
+  }, [query]);
+  const getProducts = () => {
+    dispatch(productAction.getProducts(query));
   };
   return (
     <Wrapper>

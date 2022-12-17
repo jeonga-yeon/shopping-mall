@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/style-prop-object */
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH, faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -92,6 +93,7 @@ const Navbar = () => {
   const menuList = ["여성", "남성", "신생아/유아", "아동", "스포츠", "Sale"];
   const dispatch = useDispatch();
   const authenticate = useSelector((state) => state.auth.authenticate);
+  const [searchKeyword, setSearchKeyword] = useState("");
   const goToLogin = () => {
     navigate("/login");
   };
@@ -100,6 +102,16 @@ const Navbar = () => {
       type: "LOGOUT_SUCCESS",
     });
     navigate("/");
+  };
+  const search = (event) => {
+    if (event.key === "Enter") {
+      const keyword = event.target.value;
+      if (keyword === "") {
+        navigate("/");
+      } else {
+        navigate(`/?q=${keyword}`);
+      }
+    }
   };
   return (
     <Wrapper>
@@ -112,7 +124,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faEllipsisH} className="ellipsis" />
           </li>
         </ul>
-        <Link to="/">
+        <Link to="/" onClick={() => setSearchKeyword("")}>
           <h1>My Shop</h1>
         </Link>
         <ul className="login-menu">
@@ -146,7 +158,13 @@ const Navbar = () => {
         </ul>
         <div>
           <FontAwesomeIcon icon={faSearch} className="search" />
-          <input type="text" placeholder="제품검색" />
+          <input
+            type="text"
+            placeholder="제품검색"
+            onKeyPress={(event) => search(event)}
+            onChange={(event) => setSearchKeyword(event.target.value)}
+            value={searchKeyword}
+          />
         </div>
       </BottomNav>
     </Wrapper>
