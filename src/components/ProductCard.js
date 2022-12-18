@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { faHeart as normalHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   position: relative;
@@ -40,8 +41,12 @@ const Wrapper = styled.div`
 
 const ProductCard = ({ item }) => {
   const [heart, setHeart] = useState("heart");
+  const navigate = useNavigate();
+  const goToDetail = () => {
+    navigate(`/product/${item.id}`);
+  };
   return (
-    <Wrapper>
+    <Wrapper onClick={goToDetail}>
       <img width={260} src={item?.img} />
       <div className="card__title">{item?.title}</div>
       <div>￦{item?.price}</div>
