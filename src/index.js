@@ -5,6 +5,10 @@ import App from "./App";
 import { createGlobalStyle } from "styled-components";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+
+const persistor = persistStore(store);
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -61,7 +65,9 @@ root.render(
   <BrowserRouter>
     <GlobalStyle />
     <Provider store={store}>
-      <App />
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </BrowserRouter>
 );
