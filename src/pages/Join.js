@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { authenticateAction } from "../redux/actions/authenticateAction";
+import { userAction } from "../redux/actions/userAction";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -31,6 +32,7 @@ const Form = styled.form`
       outline: none;
     }
   }
+  .email-label,
   .password-label {
     margin-top: 20px;
   }
@@ -38,11 +40,8 @@ const Form = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    button,
-    span {
-      margin-top: 20px;
-    }
     button {
+      margin-top: 20px;
       height: 30px;
       width: 70px;
       border-radius: 10px;
@@ -51,28 +50,34 @@ const Form = styled.form`
       color: white;
       cursor: pointer;
     }
-    span {
-      color: #576574;
-      text-decoration: underline;
-      cursor: pointer;
-    }
   }
 `;
 
-const Login = () => {
+const Join = () => {
+  const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const login = (event) => {
+  const join = (event) => {
     event.preventDefault();
-    dispatch(authenticateAction.login(id, password));
+    dispatch(userAction.join(name, id, password));
     navigate("/");
   };
   return (
     <Wrapper>
-      <Form onSubmit={(event) => login(event)}>
-        <label htmlFor="email">Email address</label>
+      <Form onSubmit={(event) => join(event)}>
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          type="name"
+          placeholder="name"
+          required
+          onChange={(event) => setName(event.target.value)}
+        />
+        <label htmlFor="email" className="email-label">
+          Email address
+        </label>
         <input
           id="email"
           type="email"
@@ -91,12 +96,11 @@ const Login = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <div className="join">
-          <button type="submit">로그인</button>
-          <span onClick={() => navigate("/join")}>회원가입</span>
+          <button type="submit">회원가입</button>
         </div>
       </Form>
     </Wrapper>
   );
 };
 
-export default Login;
+export default Join;
