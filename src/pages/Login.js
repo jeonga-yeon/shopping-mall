@@ -31,6 +31,11 @@ const Form = styled.form`
       outline: none;
     }
   }
+  .error {
+    font-size: 13px;
+    padding: 5px 8px;
+    color: #ee5a24;
+  }
   .password-label {
     margin-top: 20px;
   }
@@ -62,12 +67,25 @@ const Form = styled.form`
 const Login = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const users = JSON.parse(localStorage.getItem("reduxState")).user.userList;
+  const emailList = users.map((user) => user.id);
+  const passwordList = users.map((user) => user.password);
   const login = (event) => {
     event.preventDefault();
-    dispatch(authenticateAction.login(id, password));
-    navigate("/");
+    if (!emailList.includes(id)) {
+      setEmailError("가입되지 않은 계정입니다.");
+      setPasswordError("");
+    } else if (emailList.indexOf(id) !== passwordList.indexOf(password)) {
+      setPasswordError("비밀번호가 일치하지 않습니다.");
+      setEmailError("");
+    } else {
+      dispatch(authenticateAction.login(id, password));
+      navigate("/");
+    }
   };
   return (
     <Wrapper>
@@ -80,6 +98,7 @@ const Login = () => {
           required
           onChange={(event) => setId(event.target.value)}
         />
+        <span className="error">{emailError ? emailError : ""}</span>
         <label htmlFor="password" className="password-label">
           Password
         </label>
@@ -90,6 +109,7 @@ const Login = () => {
           required
           onChange={(event) => setPassword(event.target.value)}
         />
+        <span className="error">{passwordError ? passwordError : ""}</span>
         <div className="join">
           <button type="submit">로그인</button>
           <span onClick={() => navigate("/join")}>회원가입</span>
