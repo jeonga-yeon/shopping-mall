@@ -103,6 +103,9 @@ const Navbar = () => {
     });
     navigate("/");
   };
+  const goToHeart = () => {
+    navigate("/heart");
+  };
   const search = (event) => {
     if (event.key === "Enter") {
       const keyword = event.target.value;
@@ -139,7 +142,7 @@ const Navbar = () => {
               <span>로그인</span>
             </li>
           )}
-          <li>
+          <li onClick={goToHeart}>
             <FontAwesomeIcon icon={faHeart} className="menu-icon" />
             <span>즐겨찾기</span>
           </li>
