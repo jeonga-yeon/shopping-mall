@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { heartAction } from "../redux/actions/heartAction";
 import { productAction } from "../redux/actions/productAction";
 
 const Wrapper = styled.div`
@@ -31,9 +32,16 @@ const Wrapper = styled.div`
       align-items: center;
       font-size: 25px;
       margin-bottom: 20px;
-      .product-info__heart {
+      .cart__heart--normal {
+        color: #353b48;
         &:hover {
           color: red;
+          cursor: pointer;
+        }
+      }
+      .cart__heart--full {
+        color: red;
+        &:hover {
           cursor: pointer;
         }
       }
@@ -78,12 +86,16 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product.product);
   const [heart, setHeart] = useState("heart");
+  const idList = useSelector((state) => state.heart.idList);
   useEffect(() => {
     getProductDetail();
-  }, []);
+    dispatch(heartAction.heartList(idList));
+  }, [idList]);
   const getProductDetail = () => {
     dispatch(productAction.getProductDetail(id));
   };
+  const heartData = useSelector((state) => state.heart.heartData);
+  const heartIdList = heartData.map((item) => item.id);
   return (
     <Wrapper>
       <div className="product-img">
@@ -92,12 +104,26 @@ const ProductDetail = () => {
       <div className="product-info">
         <div>
           <span>{product?.title}</span>
-          <FontAwesomeIcon
-            onMouseEnter={() => setHeart("fullHeart")}
-            onMouseLeave={() => setHeart("heart")}
-            icon={heart === "heart" ? normalHeart : fullHeart}
-            className="product-info__heart"
-          />
+          {heartIdList.includes(product?.id) ? (
+            <FontAwesomeIcon
+              onMouseEnter={() => setHeart("fullHeart")}
+              icon={fullHeart}
+              className="cart__heart--full"
+              onClick={() =>
+                dispatch({ type: "DELETE_HEART", payload: { id: product?.id } })
+              }
+            />
+          ) : (
+            <FontAwesomeIcon
+              onMouseEnter={() => setHeart("fullHeart")}
+              onMouseLeave={() => setHeart("heart")}
+              icon={heart === "heart" ? normalHeart : fullHeart}
+              className="cart__heart--normal"
+              onClick={() =>
+                dispatch({ type: "HEART", payload: { id: product?.id } })
+              }
+            />
+          )}
         </div>
         <span className="product-info__price">￦{product?.price}</span>
         <span className="product-info__new">{product?.new ? "new" : ""}</span>

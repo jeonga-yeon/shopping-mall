@@ -75,23 +75,24 @@ const ProductCard = ({ item }) => {
         <div>￦{item?.price}</div>
         <div className="card__new">{item?.new ? "신제품" : ""}</div>
       </Wrapper>
-      <FontAwesomeIcon
-        onMouseEnter={() => setHeart("fullHeart")}
-        onMouseLeave={() => setHeart("heart")}
-        icon={
-          heartIdList.includes(item?.id)
-            ? fullHeart
-            : heart === "heart"
-            ? normalHeart
-            : fullHeart
-        }
-        className={
-          heartIdList.includes(item?.id)
-            ? "cart__heart--full"
-            : "cart__heart--normal"
-        }
-        onClick={() => dispatch({ type: "HEART", payload: { id: item?.id } })}
-      />
+      {heartIdList.includes(item?.id) ? (
+        <FontAwesomeIcon
+          onMouseEnter={() => setHeart("fullHeart")}
+          icon={fullHeart}
+          className="cart__heart--full"
+          onClick={() =>
+            dispatch({ type: "DELETE_HEART", payload: { id: item?.id } })
+          }
+        />
+      ) : (
+        <FontAwesomeIcon
+          onMouseEnter={() => setHeart("fullHeart")}
+          onMouseLeave={() => setHeart("heart")}
+          icon={heart === "heart" ? normalHeart : fullHeart}
+          className="cart__heart--normal"
+          onClick={() => dispatch({ type: "HEART", payload: { id: item?.id } })}
+        />
+      )}
     </Container>
   );
 };
