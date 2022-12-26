@@ -5,7 +5,7 @@ import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { heartAction } from "../redux/actions/heartAction";
 import { productAction } from "../redux/actions/productAction";
@@ -87,6 +87,16 @@ const ProductDetail = () => {
   const product = useSelector((state) => state.product.product);
   const [heart, setHeart] = useState("heart");
   const idList = useSelector((state) => state.heart.idList);
+  const authenticate = useSelector((state) => state.auth.authenticate);
+  const navigate = useNavigate();
+  const handlePayment = () => {
+    if (!authenticate) {
+      navigate("/login");
+    } else {
+      window.alert("결제가 완료되었습니다.");
+      navigate("/");
+    }
+  };
   useEffect(() => {
     getProductDetail();
     dispatch(heartAction.heartList(idList));
@@ -136,7 +146,7 @@ const ProductDetail = () => {
           ))}
         </select>
         <button>장바구니</button>
-        <button>결제</button>
+        <button onClick={handlePayment}>결제</button>
       </div>
     </Wrapper>
   );

@@ -2,7 +2,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEllipsisH,
+  faSearch,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -146,8 +150,9 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faHeart} className="menu-icon" />
             <span>즐겨찾기</span>
           </li>
-          <li>
-            <span>쇼핑몰(0)</span>
+          <li onClick={() => navigate("/cart")}>
+            <FontAwesomeIcon icon={faShoppingCart} className="menu-icon" />
+            <span>장바구니(0)</span>
           </li>
         </ul>
       </TopNav>
