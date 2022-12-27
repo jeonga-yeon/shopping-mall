@@ -53,11 +53,14 @@ const Wrapper = styled.div`
     .product-info__new {
       margin-bottom: 70px;
     }
-    .size-select,
+    .product-info__quantity,
+    .product-info__size,
     button {
       width: 400px;
+      cursor: pointer;
     }
-    .size-select {
+    .product-info__quantity,
+    .product-info__size {
       height: 50px;
       padding-left: 10px;
       margin-bottom: 20px;
@@ -74,10 +77,6 @@ const Wrapper = styled.div`
       border: none;
       color: white;
     }
-    .size-select,
-    button {
-      cursor: pointer;
-    }
   }
 `;
 
@@ -86,6 +85,8 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product.product);
   const [heart, setHeart] = useState("heart");
+  const [size, setSize] = useState();
+  const [quantity, setQuantity] = useState();
   const idList = useSelector((state) => state.heart.idList);
   const authenticate = useSelector((state) => state.auth.authenticate);
   const navigate = useNavigate();
@@ -106,12 +107,24 @@ const ProductDetail = () => {
   };
   const heartData = useSelector((state) => state.heart.heartData);
   const heartIdList = heartData.map((item) => item.id);
+  const addCart = (event) => {
+    event.preventDefault();
+    dispatch({
+      type: "CART",
+      payload: { id: product?.id, quantity, size, price: product?.price },
+    });
+    if (window.confirm("장바구니에 담았습니다. 장바구니로 이동하시겠습니까?")) {
+      navigate("/cart");
+    } else {
+      return;
+    }
+  };
   return (
     <Wrapper>
       <div className="product-img">
         <img src={product?.img} />
       </div>
-      <div className="product-info">
+      <form className="product-info" onSubmit={addCart}>
         <div>
           <span>{product?.title}</span>
           {heartIdList.includes(product?.id) ? (
@@ -137,7 +150,25 @@ const ProductDetail = () => {
         </div>
         <span className="product-info__price">￦{product?.price}</span>
         <span className="product-info__new">{product?.new ? "new" : ""}</span>
-        <select name="size" className="size-select">
+        <select
+          name="quantity"
+          className="product-info__quantity"
+          value={quantity}
+          onChange={(event) => setQuantity(event.target.value)}
+          required
+        >
+          <option value="">수량</option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+        </select>
+        <select
+          name="size"
+          className="product-info__size"
+          value={size}
+          onChange={(event) => setSize(event.target.value)}
+          required
+        >
           <option value="">사이즈 선택</option>
           {product?.size.map((size, index) => (
             <option key={index} value={size}>
@@ -145,9 +176,9 @@ const ProductDetail = () => {
             </option>
           ))}
         </select>
-        <button>장바구니</button>
+        <button type="submit">장바구니</button>
         <button onClick={handlePayment}>결제</button>
-      </div>
+      </form>
     </Wrapper>
   );
 };

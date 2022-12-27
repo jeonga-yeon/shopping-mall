@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { authenticateAction } from "../redux/actions/authenticateAction";
 import { userAction } from "../redux/actions/userAction";
 
 const Wrapper = styled.div`
