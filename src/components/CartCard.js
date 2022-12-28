@@ -103,7 +103,9 @@ const CartCard = ({ item }) => {
         <div className="cart__item--detail">
           <div>
             <span className="cart__item--title">{item.title}</span>
-            <span className="cart__item--price">￦{item.price}</span>
+            <span className="cart__item--price">
+              ￦{item.price.toLocaleString()}
+            </span>
             <span className="cart__item--quantity">
               수량: {cartInfoList[cartIdList.indexOf(item.id)].quantity}
             </span>

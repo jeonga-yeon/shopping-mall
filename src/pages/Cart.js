@@ -125,22 +125,28 @@ const Cart = () => {
       setTotalPrice(0);
     }
   };
+  const apiError = useSelector((state) => state.cart.error);
   return (
     <Wrapper>
       <h1>장바구니</h1>
       <div className="cart">
-        {cartData.length === 0 ? (
-          <div className="cart__list--empty">
-            <span>고객님의 장바구니가 비어있습니다.</span>
-            <span onClick={() => navigate("/")}>계속 쇼핑하기</span>
-          </div>
+        {!apiError ? (
+          cartData.length === 0 ? (
+            <div className="cart__list--empty">
+              <span>고객님의 장바구니가 비어있습니다.</span>
+              <span onClick={() => navigate("/")}>계속 쇼핑하기</span>
+            </div>
+          ) : (
+            <div className="cart__list">
+              {cartData.map((item, index) => (
+                <CartCard key={index} item={item} />
+              ))}
+            </div>
+          )
         ) : (
-          <div className="cart__list">
-            {cartData.map((item, index) => (
-              <CartCard key={index} item={item} />
-            ))}
-          </div>
+          apiError
         )}
+
         <div className="cart__payment">
           {authenticate ? (
             ""
@@ -151,16 +157,19 @@ const Cart = () => {
           )}
           <div className="cart__order-price">
             <span>주문 가격</span>
-            <span>₩ {totalPrice}</span>
+            <span>₩ {totalPrice.toLocaleString()}</span>
           </div>
           <div className="cart__delivery-fee">
             <span>배송</span>
-            <span>₩ 2500</span>
+            <span>₩ {cartData.length !== 0 ? (2500).toLocaleString() : 0}</span>
           </div>
           <div className="line"></div>
           <div className="cart__total-price">
             <span>합계</span>
-            <span>₩ {totalPrice + 2500}</span>
+            <span>
+              ₩{" "}
+              {cartData.length !== 0 ? (totalPrice + 2500).toLocaleString() : 0}
+            </span>
           </div>
           <button className="cart__payment-button" onClick={payment}>
             결제하기

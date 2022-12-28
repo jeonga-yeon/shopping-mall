@@ -87,6 +87,7 @@ const ProductDetail = () => {
   const [heart, setHeart] = useState("heart");
   const [size, setSize] = useState();
   const [quantity, setQuantity] = useState();
+  const [loading, setLoading] = useState(true);
   const idList = useSelector((state) => state.heart.idList);
   const authenticate = useSelector((state) => state.auth.authenticate);
   const navigate = useNavigate();
@@ -103,7 +104,7 @@ const ProductDetail = () => {
     dispatch(heartAction.heartList(idList));
   }, [idList]);
   const getProductDetail = () => {
-    dispatch(productAction.getProductDetail(id));
+    dispatch(productAction.getProductDetail(id, loading, setLoading));
   };
   const heartData = useSelector((state) => state.heart.heartData);
   const heartIdList = heartData.map((item) => item.id);
@@ -119,7 +120,10 @@ const ProductDetail = () => {
       return;
     }
   };
-  return (
+  let apiError = useSelector((state) => state.product.getProductDetailError);
+  apiError = JSON.stringify(apiError);
+  if (apiError === "{}") apiError = false;
+  return loading ? null : !apiError ? (
     <Wrapper>
       <div className="product-img">
         <img src={product?.img} />
@@ -148,7 +152,9 @@ const ProductDetail = () => {
             />
           )}
         </div>
-        <span className="product-info__price">￦{product?.price}</span>
+        <span className="product-info__price">
+          ￦{product?.price.toLocaleString()}
+        </span>
         <span className="product-info__new">{product?.new ? "new" : ""}</span>
         <select
           name="quantity"
@@ -180,6 +186,8 @@ const ProductDetail = () => {
         <button onClick={handlePayment}>결제</button>
       </form>
     </Wrapper>
+  ) : (
+    apiError
   );
 };
 

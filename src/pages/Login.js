@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { authenticateAction } from "../redux/actions/authenticateAction";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -83,7 +82,7 @@ const Login = () => {
       setPasswordError("비밀번호가 일치하지 않습니다.");
       setEmailError("");
     } else {
-      dispatch(authenticateAction.login(id, password));
+      dispatch({ type: "LOGIN_SUCCESS", payload: { id, password } });
       navigate("/");
     }
   };

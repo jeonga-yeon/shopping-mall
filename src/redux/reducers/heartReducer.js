@@ -1,6 +1,7 @@
 let initialState = {
   idList: [],
   heartData: [],
+  error: "",
 };
 
 function heartReducer(state = initialState, action) {
@@ -15,6 +16,8 @@ function heartReducer(state = initialState, action) {
       };
     case "HEART_SUCCESS":
       return { ...state, heartData: payload.heartData };
+    case "HEART_ERROR":
+      return { ...state, error: payload.error };
     default:
       return { ...state };
   }

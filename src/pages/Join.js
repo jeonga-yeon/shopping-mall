@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { userAction } from "../redux/actions/userAction";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -60,7 +59,8 @@ const Join = () => {
   const navigate = useNavigate();
   const join = (event) => {
     event.preventDefault();
-    dispatch(userAction.join(name, id, password));
+    const user = { name, id, password };
+    dispatch({ type: "JOIN_SUCCESS", payload: { user } });
     navigate("/");
   };
   return (

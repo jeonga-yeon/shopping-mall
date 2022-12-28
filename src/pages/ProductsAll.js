@@ -27,14 +27,17 @@ const ProductsAll = () => {
   const getProducts = () => {
     dispatch(productAction.getProducts(query));
   };
+  const apiError = useSelector((state) => state.product.getProductsError);
   return (
     <Wrapper>
       <Products>
-        {productList.map((item, index) => (
-          <li key={index}>
-            <ProductCard item={item} />
-          </li>
-        ))}
+        {!apiError
+          ? productList.map((item, index) => (
+              <li key={index}>
+                <ProductCard item={item} />
+              </li>
+            ))
+          : apiError}
       </Products>
     </Wrapper>
   );

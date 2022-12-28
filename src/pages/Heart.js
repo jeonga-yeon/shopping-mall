@@ -22,18 +22,23 @@ const Heart = () => {
     dispatch(heartAction.heartList(idList));
   }, []);
   const heartData = useSelector((state) => state.heart.heartData);
+  const apiError = useSelector((state) => state.heart.error);
   return (
     <Wrapper>
-      {heartData.length !== 0 ? (
-        <Products>
-          {heartData.map((item, index) => (
-            <li key={index}>
-              <ProductCard item={item} />
-            </li>
-          ))}
-        </Products>
+      {!apiError ? (
+        heartData.length !== 0 ? (
+          <Products>
+            {heartData.map((item, index) => (
+              <li key={index}>
+                <ProductCard item={item} />
+              </li>
+            ))}
+          </Products>
+        ) : (
+          <span>즐겨찾기에 추가된 상품이 없습니다.</span>
+        )
       ) : (
-        <span>즐겨찾기에 추가된 상품이 없습니다.</span>
+        apiError
       )}
     </Wrapper>
   );

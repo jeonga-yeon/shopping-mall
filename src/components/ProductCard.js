@@ -72,7 +72,7 @@ const ProductCard = ({ item }) => {
       <Wrapper onClick={goToDetail}>
         <img width={260} src={item?.img} />
         <div className="card__title">{item?.title}</div>
-        <div>￦{item?.price}</div>
+        <div>￦{item?.price.toLocaleString()}</div>
         <div className="card__new">{item?.new ? "신제품" : ""}</div>
       </Wrapper>
       {heartIdList.includes(item?.id) ? (

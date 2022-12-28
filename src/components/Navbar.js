@@ -120,6 +120,7 @@ const Navbar = () => {
       }
     }
   };
+  const cartInfoList = useSelector((state) => state.cart.cartInfoList);
   return (
     <Wrapper>
       <TopNav>
@@ -152,7 +153,7 @@ const Navbar = () => {
           </li>
           <li onClick={() => navigate("/cart")}>
             <FontAwesomeIcon icon={faShoppingCart} className="menu-icon" />
-            <span>장바구니(0)</span>
+            <span>장바구니({cartInfoList.length})</span>
           </li>
         </ul>
       </TopNav>

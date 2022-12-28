@@ -1,6 +1,7 @@
 let initialState = {
   cartInfoList: [],
   cartData: [],
+  error: "",
 };
 
 function cartReducer(state = initialState, action) {
@@ -35,6 +36,8 @@ function cartReducer(state = initialState, action) {
       };
     case "CART_SUCCESS":
       return { ...state, cartData: payload.cartData };
+    case "CART_ERROR":
+      return { ...state, error: payload.error };
     default:
       return { ...state };
   }
