@@ -17,10 +17,10 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     margin: 50px 0px;
+    margin-bottom: 100px;
     .cart__list,
     .cart__list--empty {
       width: 600px;
-      height: 100px;
       margin-right: 10px;
     }
     .cart__list {
@@ -44,6 +44,7 @@ const Wrapper = styled.div`
     }
     .cart__payment {
       width: 350px;
+      height: 360px;
       background-color: white;
       margin-left: 10px;
       padding: 20px;

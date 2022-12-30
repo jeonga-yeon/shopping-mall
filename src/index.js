@@ -39,6 +39,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	background-color: #faf9f8;
+	overflow-x: hidden;
 }
 ol, ul {
 	list-style: none;

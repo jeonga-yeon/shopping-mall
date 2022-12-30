@@ -11,13 +11,14 @@ const Wrapper = styled.div`
 `;
 
 const Form = styled.form`
-  margin-top: 70px;
+  margin-top: 130px;
   width: 600px;
   display: flex;
   flex-direction: column;
   border: 1px solid #dcdde1;
   border-radius: 20px;
   padding: 30px 50px;
+  margin-bottom: 180px;
   label {
     margin-bottom: 8px;
   }

@@ -6,6 +6,7 @@ import Join from "./pages/Join";
 import Login from "./pages/Login";
 import ProductDetail from "./pages/ProductDetail";
 import ProductsAll from "./pages/ProductsAll";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
