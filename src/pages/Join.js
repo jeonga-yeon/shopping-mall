@@ -31,6 +31,11 @@ const Form = styled.form`
       outline: none;
     }
   }
+  .error {
+    font-size: 13px;
+    padding: 5px 8px;
+    color: #ee5a24;
+  }
   .email-label,
   .password-label {
     margin-top: 20px;
@@ -56,13 +61,20 @@ const Join = () => {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const users = JSON.parse(localStorage.getItem("reduxState")).user.userList;
+  const emailList = users.map((user) => user.id);
   const join = (event) => {
     event.preventDefault();
-    const user = { name, id, password };
-    dispatch({ type: "JOIN_SUCCESS", payload: { user } });
-    navigate("/");
+    if (emailList.includes(id)) {
+      setEmailError("이미 가입된 계정입니다.");
+    } else {
+      const user = { name, id, password };
+      dispatch({ type: "JOIN_SUCCESS", payload: { user } });
+      navigate("/");
+    }
   };
   return (
     <Wrapper>
@@ -85,6 +97,7 @@ const Join = () => {
           required
           onChange={(event) => setId(event.target.value)}
         />
+        <span className="error">{emailError ? emailError : ""}</span>
         <label htmlFor="password" className="password-label">
           Password
         </label>
