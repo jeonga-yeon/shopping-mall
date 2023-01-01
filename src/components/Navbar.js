@@ -42,7 +42,7 @@ const Menu = styled.div`
       .mobile-menu__nav {
         .mobile-menu__icon,
         h1 {
-          margin-left: 20px;
+          margin-left: 30px;
         }
         .mobile-menu__icon {
           font-size: 25px;
@@ -85,6 +85,29 @@ const Menu = styled.div`
               &:hover {
                 cursor: pointer;
                 text-decoration: underline;
+              }
+            }
+          }
+          .mobile-search {
+            position: relative;
+            margin-top: 320px;
+            display: flex;
+            align-items: center;
+            .search {
+              position: fixed;
+              left: 16px;
+              z-index: 10;
+            }
+            input {
+              position: fixed;
+              height: 30px;
+              width: 250px;
+              border: none;
+              border-bottom: 1px solid black;
+              background-color: #dfb887;
+              padding-left: 25px;
+              &:focus {
+                outline: none;
               }
             }
           }
@@ -321,6 +344,16 @@ const Navbar = () => {
                 <li>Sale</li>
                 <li>홈</li>
               </ul>
+              <div className="mobile-search">
+                <FontAwesomeIcon icon={faSearch} className="search" />
+                <input
+                  type="text"
+                  placeholder="제품검색"
+                  onKeyPress={(event) => search(event)}
+                  onChange={(event) => setSearchKeyword(event.target.value)}
+                  value={searchKeyword}
+                />
+              </div>
             </div>
           ) : null}
         </div>
