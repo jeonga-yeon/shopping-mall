@@ -102,6 +102,8 @@ const ProductDetail = () => {
   const handlePayment = () => {
     if (!authenticate) {
       navigate("/login");
+    } else if (!size || !quantity) {
+      window.alert("수량과 사이즈를 선택해주세요.");
     } else {
       window.alert("결제가 완료되었습니다.");
       navigate("/");
