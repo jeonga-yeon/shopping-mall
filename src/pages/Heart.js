@@ -23,6 +23,16 @@ const Wrapper = styled.div`
       color: gray;
     }
   }
+  @media screen and (max-width: 500px) {
+    margin: 0px;
+    .products {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+  }
 `;
 
 const Products = styled.ul`
@@ -39,13 +49,15 @@ const Heart = () => {
     dispatch(heartAction.heartList(idList));
   }, []);
   const heartData = useSelector((state) => state.heart.heartData);
-  const apiError = useSelector((state) => state.heart.error);
+  let apiError = useSelector((state) => state.heart.error);
+  apiError = JSON.stringify(apiError);
+  if (apiError === "{}" || '""') apiError = false;
   return (
     <Wrapper>
       <h1>즐겨찾기</h1>
       {!apiError ? (
         heartData.length !== 0 ? (
-          <Products>
+          <Products className="products">
             {heartData.map((item, index) => (
               <li key={index}>
                 <ProductCard item={item} />

@@ -8,6 +8,24 @@ import CartCard from "../components/CartCard";
 import { cartAction } from "../redux/actions/cartAction";
 
 const Wrapper = styled.div`
+  @media screen and (max-width: 500px) {
+    .cart {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .cart__list,
+      .cart__list--empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
+      }
+      .cart__payment {
+        margin-top: 30px;
+      }
+    }
+  }
   h1 {
     margin: 50px;
     font-size: 35px;
@@ -21,7 +39,7 @@ const Wrapper = styled.div`
     .cart__list,
     .cart__list--empty {
       width: 600px;
-      margin-right: 10px;
+      margin-right: 20px;
     }
     .cart__list {
       display: flex;
@@ -32,6 +50,7 @@ const Wrapper = styled.div`
       padding: 20px;
       display: flex;
       flex-direction: column;
+      height: 120px;
       span:first-child {
         font-size: 25px;
         margin-bottom: 60px;
@@ -46,7 +65,6 @@ const Wrapper = styled.div`
       width: 350px;
       height: 360px;
       background-color: white;
-      margin-left: 10px;
       padding: 20px;
       .cart__login,
       .cart__payment-button {
@@ -126,7 +144,9 @@ const Cart = () => {
       setTotalPrice(0);
     }
   };
-  const apiError = useSelector((state) => state.cart.error);
+  let apiError = useSelector((state) => state.cart.error);
+  apiError = JSON.stringify(apiError);
+  if (apiError === "{}" || '""') apiError = false;
   return (
     <Wrapper>
       <h1>장바구니</h1>

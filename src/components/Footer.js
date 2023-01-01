@@ -36,6 +36,14 @@ const Wrapper = styled.div`
       }
     }
   }
+  @media screen and (max-width: 970px) {
+    .footer__category {
+      display: none;
+    }
+    .footer__logo {
+      padding-top: 70px;
+    }
+  }
   .footer__logo {
     @import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
     color: #30336b;
@@ -89,7 +97,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className="footer__logo" onClick={() => navigate("/")}>
-        My Shop
+        <span>My Shop</span>
       </div>
     </Wrapper>
   );

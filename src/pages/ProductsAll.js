@@ -9,6 +9,15 @@ import { productAction } from "../redux/actions/productAction";
 
 const Wrapper = styled.div`
   margin: 80px 200px;
+  @media screen and (max-width: 500px) {
+    .products {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+  }
 `;
 
 const Products = styled.ul`
@@ -27,10 +36,12 @@ const ProductsAll = () => {
   const getProducts = () => {
     dispatch(productAction.getProducts(query));
   };
-  const apiError = useSelector((state) => state.product.getProductsError);
+  let apiError = useSelector((state) => state.product.getProductsError);
+  apiError = JSON.stringify(apiError);
+  if (apiError === "{}" || '""') apiError = false;
   return (
     <Wrapper>
-      <Products>
+      <Products className="products">
         {!apiError
           ? productList.map((item, index) => (
               <li key={index}>

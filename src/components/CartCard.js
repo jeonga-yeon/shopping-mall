@@ -15,6 +15,13 @@ import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   .cart__item {
+    @media screen and (max-width: 500px) {
+      width: 400px;
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+    }
     display: flex;
     margin-bottom: 10px;
     .cart__item--img {

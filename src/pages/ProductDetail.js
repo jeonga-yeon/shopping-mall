@@ -16,14 +16,22 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 50px 0px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    .product-img {
+      margin-left: 15px;
+    }
+    .product-info {
+      margin: 20px 0px;
+    }
+  }
   .product-img {
-    margin-right: 10px;
+    margin-right: 20px;
     img {
       width: 396px;
     }
   }
   .product-info {
-    margin-left: 10px;
     display: flex;
     flex-direction: column;
     div {
@@ -122,7 +130,7 @@ const ProductDetail = () => {
   };
   let apiError = useSelector((state) => state.product.getProductDetailError);
   apiError = JSON.stringify(apiError);
-  if (apiError === "{}") apiError = false;
+  if (apiError === "{}" || '""') apiError = false;
   return loading ? null : !apiError ? (
     <Wrapper>
       <div className="product-img">

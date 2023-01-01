@@ -21,7 +21,7 @@ const Container = styled.div`
   .cart__heart--normal {
     font-size: 20px;
     position: absolute;
-    right: 30px;
+    left: 230px;
     bottom: 77px;
     color: #353b48;
     &:hover {
@@ -32,7 +32,7 @@ const Container = styled.div`
   .cart__heart--full {
     font-size: 20px;
     position: absolute;
-    right: 30px;
+    left: 230px;
     bottom: 77px;
     color: red;
     z-index: 7;
