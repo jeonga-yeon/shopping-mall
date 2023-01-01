@@ -229,7 +229,7 @@ const Navbar = () => {
     if (event.key === "Enter") {
       const keyword = event.target.value;
       if (keyword === "") {
-        navigate("/");
+        return;
       } else {
         navigate(`/?q=${keyword}`);
       }

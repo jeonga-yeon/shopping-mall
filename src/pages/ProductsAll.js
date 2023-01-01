@@ -24,6 +24,10 @@ const Products = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 50px;
+  span {
+    margin-bottom: 100px;
+    color: gray;
+  }
 `;
 
 const ProductsAll = () => {
@@ -42,13 +46,19 @@ const ProductsAll = () => {
   return (
     <Wrapper>
       <Products className="products">
-        {!apiError
-          ? productList.map((item, index) => (
+        {!apiError ? (
+          productList.length !== 0 ? (
+            productList.map((item, index) => (
               <li key={index}>
                 <ProductCard item={item} />
               </li>
             ))
-          : apiError}
+          ) : (
+            <span>검색 결과가 없습니다.</span>
+          )
+        ) : (
+          apiError
+        )}
       </Products>
     </Wrapper>
   );
