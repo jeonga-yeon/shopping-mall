@@ -37,7 +37,7 @@ const Wrapper = styled.div`
 
 const Products = styled.ul`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   row-gap: 50px;
   margin-bottom: 50px;
 `;
