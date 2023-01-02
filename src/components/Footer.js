@@ -8,8 +8,11 @@ const Wrapper = styled.div`
   width: 100%;
   text-align: center;
   background-color: #e4e4e4;
-  .footer__logo {
+  .footer__logo span {
+    display: flex;
+    justify-content: center;
     @import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+    height: 100%;
     color: #30336b;
     font-size: 20px;
     font-weight: 600;
@@ -51,7 +54,7 @@ const Wrapper = styled.div`
     .footer__category {
       display: none;
     }
-    .footer__logo {
+    .footer__logo span {
       padding-top: 70px;
     }
   }
