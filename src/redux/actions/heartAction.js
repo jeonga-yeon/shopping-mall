@@ -1,7 +1,7 @@
 function heartList(idList) {
   return async (dispatch, getState) => {
     try {
-      const url = `https://my-json-server.typicode.com/joyfuldev/shopping-mall/products`;
+      const url = `http://localhost:5000/products`;
       const response = await fetch(url);
       const data = await response.json();
       const heartData = data.filter((item) => idList.includes(item.id));
