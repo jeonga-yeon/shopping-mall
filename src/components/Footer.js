@@ -5,11 +5,15 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
   width: 100%;
   text-align: center;
   background-color: #e4e4e4;
   padding-bottom: 50px;
   .footer__logo span {
+    font-family: "Secular One", sans-serif;
+    color: #30336b;
+    font-weight: 500;
     &:hover {
       cursor: pointer;
     }
