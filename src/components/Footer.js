@@ -8,6 +8,17 @@ const Wrapper = styled.div`
   width: 100%;
   text-align: center;
   background-color: #e4e4e4;
+  .footer__logo {
+    @import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+    color: #30336b;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 30px 0px 0px 0px;
+    padding-bottom: 80px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
   .footer__category {
     padding: 0px 300px;
     display: grid;
@@ -42,17 +53,6 @@ const Wrapper = styled.div`
     }
     .footer__logo {
       padding-top: 70px;
-    }
-  }
-  .footer__logo {
-    @import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
-    color: #30336b;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 30px 0px 0px 0px;
-    padding-bottom: 80px;
-    &:hover {
-      cursor: pointer;
     }
   }
 `;

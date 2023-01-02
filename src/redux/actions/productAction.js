@@ -14,20 +14,18 @@ function getProducts(query, setLoading) {
   };
 }
 
-function getProductDetail(id, setLoding) {
+function getProductDetail(id) {
   return async (dispatch, getState) => {
     try {
       const url = `https://my-json-server.typicode.com/joyfuldev/shopping-mall/products/${id}`;
       const response = await fetch(url);
       const data = await response.json();
       dispatch({ type: "GET_PRODUCT_DETAIL", payload: { data } });
-      setLoding(false);
     } catch (error) {
       dispatch({
         type: "GET_PRODUCT_DETAIL_ERROR",
         payload: { error },
       });
-      setLoding(true);
     }
   };
 }

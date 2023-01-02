@@ -117,7 +117,6 @@ const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState(0);
-  const [loading, setLoading] = useState(true);
   const authenticate = useSelector((state) => state.auth.authenticate);
   const payment = () => {
     if (!authenticate) {
@@ -132,7 +131,7 @@ const Cart = () => {
   };
   const cartInfoList = useSelector((state) => state.cart.cartInfoList);
   useEffect(() => {
-    dispatch(cartAction.cartList(cartInfoList, setLoading));
+    dispatch(cartAction.cartList(cartInfoList));
     caculatePrice();
   }, [cartInfoList]);
   const cartData = useSelector((state) => state.cart.cartData);
@@ -153,7 +152,7 @@ const Cart = () => {
       <h1>장바구니</h1>
       <div className="cart">
         {!apiError ? (
-          loading ? null : cartData.length === 0 ? (
+          cartData.length === 0 ? (
             <div className="cart__list--empty">
               <span>고객님의 장바구니가 비어있습니다.</span>
               <span onClick={() => navigate("/")}>계속 쇼핑하기</span>

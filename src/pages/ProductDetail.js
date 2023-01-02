@@ -95,7 +95,6 @@ const ProductDetail = () => {
   const [heart, setHeart] = useState("heart");
   const [size, setSize] = useState();
   const [quantity, setQuantity] = useState();
-  const [loading, setLoading] = useState(true);
   const idList = useSelector((state) => state.heart.idList);
   const authenticate = useSelector((state) => state.auth.authenticate);
   const navigate = useNavigate();
@@ -114,7 +113,7 @@ const ProductDetail = () => {
     dispatch(heartAction.heartList(idList));
   }, [idList]);
   const getProductDetail = () => {
-    dispatch(productAction.getProductDetail(id, loading, setLoading));
+    dispatch(productAction.getProductDetail(id));
   };
   const heartData = useSelector((state) => state.heart.heartData);
   const heartIdList = heartData.map((item) => item.id);
@@ -133,7 +132,7 @@ const ProductDetail = () => {
   let apiError = useSelector((state) => state.product.getProductDetailError);
   apiError = JSON.stringify(apiError);
   if (apiError === "{}" || '""') apiError = false;
-  return loading ? null : !apiError ? (
+  return !apiError ? (
     <Wrapper>
       <div className="product-img">
         <img src={product?.img} />
