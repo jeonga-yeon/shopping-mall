@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
@@ -34,12 +34,13 @@ const Products = styled.ul`
 const ProductsAll = () => {
   const dispatch = useDispatch();
   const [query, setQuery] = useSearchParams();
+  const [loading, setLoading] = useState(true);
   const productList = useSelector((state) => state.product.productList);
   useEffect(() => {
     getProducts();
   }, [query]);
   const getProducts = () => {
-    dispatch(productAction.getProducts(query));
+    dispatch(productAction.getProducts(query, setLoading));
   };
   let apiError = useSelector((state) => state.product.getProductsError);
   apiError = JSON.stringify(apiError);
@@ -48,7 +49,7 @@ const ProductsAll = () => {
     <Wrapper>
       <Products className="products">
         {!apiError ? (
-          productList.length !== 0 ? (
+          loading ? null : productList.length !== 0 ? (
             productList.map((item, index) => (
               <li key={index}>
                 <ProductCard item={item} />

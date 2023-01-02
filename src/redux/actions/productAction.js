@@ -1,4 +1,4 @@
-function getProducts(query) {
+function getProducts(query, setLoading) {
   return async (dispatch, getState) => {
     try {
       const searchQuery = query.get("q") || "";
@@ -6,26 +6,28 @@ function getProducts(query) {
       const response = await fetch(url);
       const data = await response.json();
       dispatch({ type: "GET_PRODUCTS", payload: { data } });
+      setLoading(false);
     } catch (error) {
       dispatch({ type: "GET_PRODUCTS_ERROR", payload: { error } });
+      setLoading(true);
     }
   };
 }
 
-function getProductDetail(id, loading, setLoding) {
+function getProductDetail(id, setLoding) {
   return async (dispatch, getState) => {
     try {
       const url = `http://localhost:5000/products/${id}`;
       const response = await fetch(url);
       const data = await response.json();
+      dispatch({ type: "GET_PRODUCT_DETAIL", payload: { data } });
       setLoding(false);
-      dispatch({ type: "GET_PRODUCT_DETAIL", payload: { data, loading } });
     } catch (error) {
-      setLoding(true);
       dispatch({
         type: "GET_PRODUCT_DETAIL_ERROR",
-        payload: { error, loading },
+        payload: { error },
       });
+      setLoding(true);
     }
   };
 }

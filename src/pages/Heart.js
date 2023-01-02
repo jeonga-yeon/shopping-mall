@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import ProductCard from "../components/ProductCard";
@@ -43,10 +43,11 @@ const Products = styled.ul`
 `;
 
 const Heart = () => {
+  const [loading, setLoading] = useState(true);
   const idList = useSelector((state) => state.heart.idList);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(heartAction.heartList(idList));
+    dispatch(heartAction.heartList(idList, setLoading));
   }, []);
   const heartData = useSelector((state) => state.heart.heartData);
   let apiError = useSelector((state) => state.heart.error);
@@ -56,7 +57,7 @@ const Heart = () => {
     <Wrapper>
       <h1>즐겨찾기</h1>
       {!apiError ? (
-        heartData.length !== 0 ? (
+        loading ? null : heartData.length !== 0 ? (
           <Products className="products">
             {heartData.map((item, index) => (
               <li key={index}>
