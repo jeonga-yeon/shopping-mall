@@ -10,7 +10,6 @@ import { productAction } from "../redux/actions/productAction";
 const Wrapper = styled.div`
   margin: 80px 200px;
   @media screen and (max-width: 500px) {
-    margin-left: 220px;
     margin-bottom: 350px;
     .products {
       display: flex;

@@ -25,6 +25,7 @@ const Menu = styled.div`
     }
     .mobile-menu {
       width: 100%;
+      height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -93,9 +94,10 @@ const Menu = styled.div`
             margin-top: 320px;
             display: flex;
             align-items: center;
+            justify-content: center;
             .search {
               position: fixed;
-              left: 16px;
+              left: 26px;
               z-index: 10;
             }
             input {
