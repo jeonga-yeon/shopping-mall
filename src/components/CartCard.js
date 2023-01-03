@@ -93,7 +93,7 @@ const CartCard = ({ item }) => {
   useEffect(() => {
     dispatch(cartAction.cartList(cartInfoList));
     dispatch(heartAction.heartList(idList));
-  }, [cartInfoList, idList]);
+  }, [idList]);
   const heartData = useSelector((state) => state.heart.heartData);
   const heartIdList = heartData.map((item) => item.id);
   const cartIdList = cartInfoList.map((item) => item.id);
