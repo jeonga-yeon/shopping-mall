@@ -2,7 +2,7 @@ function getProducts(query, setLoading) {
   return async (dispatch, getState) => {
     try {
       const searchQuery = query.get("q") || "";
-      const url = `http://localhost:5000/products?q=${searchQuery}`;
+      const url = `https://my-shop.herokuapp.com/api/products?q=${searchQuery}`;
       const response = await fetch(url);
       const data = await response.json();
       dispatch({ type: "GET_PRODUCTS", payload: { data } });
@@ -17,7 +17,7 @@ function getProducts(query, setLoading) {
 function getProductDetail(id) {
   return async (dispatch, getState) => {
     try {
-      const url = `http://localhost:5000/products/${id}`;
+      const url = `https://my-shop.herokuapp.com/api/products/${id}`;
       const response = await fetch(url);
       const data = await response.json();
       dispatch({ type: "GET_PRODUCT_DETAIL", payload: { data } });

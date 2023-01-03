@@ -1,7 +1,7 @@
 function heartList(idList) {
   return async (dispatch, getState) => {
     try {
-      const url = `http://localhost:5000/products`;
+      const url = `https://my-shop.herokuapp.com/api/products`;
       const response = await fetch(url);
       const data = await response.json();
       const heartData = data.filter((item) => idList.includes(item.id));
