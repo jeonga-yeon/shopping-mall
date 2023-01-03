@@ -2,7 +2,7 @@ function cartList(cartInfoList) {
   return async (dispatch, getState) => {
     try {
       const cartIdList = cartInfoList.map((info) => info.id);
-      const url = `https://my-shop.herokuapp.com/api/products`;
+      const url = `https://my-shop.herokuapp.com/products`;
       const response = await fetch(url);
       const data = await response.json();
       const cartData = data.filter((item) => cartIdList.includes(item.id));
