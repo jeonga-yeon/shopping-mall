@@ -9,7 +9,6 @@ import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { cartAction } from "../redux/actions/cartAction";
 import { heartAction } from "../redux/actions/heartAction";
 import { useNavigate } from "react-router-dom";
 
@@ -91,7 +90,6 @@ const CartCard = ({ item }) => {
   const cartInfoList = useSelector((state) => state.cart.cartInfoList);
   const idList = useSelector((state) => state.heart.idList);
   useEffect(() => {
-    dispatch(cartAction.cartList(cartInfoList));
     dispatch(heartAction.heartList(idList));
   }, [idList]);
   const heartData = useSelector((state) => state.heart.heartData);
@@ -104,7 +102,7 @@ const CartCard = ({ item }) => {
           onClick={() => navigate(`/product/${item.id}`)}
           className="cart__item--img"
         >
-          <img src={item.img} width={80} />
+          <img src={item.image} width={80} />
         </div>
         <div className="cart__item--detail">
           <div>

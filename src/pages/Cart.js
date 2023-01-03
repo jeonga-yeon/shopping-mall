@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import CartCard from "../components/CartCard";
-import { cartAction } from "../redux/actions/cartAction";
 
 const Wrapper = styled.div`
   @media screen and (max-width: 500px) {
@@ -131,10 +130,8 @@ const Cart = () => {
   };
   const cartInfoList = useSelector((state) => state.cart.cartInfoList);
   useEffect(() => {
-    dispatch(cartAction.cartList(cartInfoList));
     caculatePrice();
-  }, []);
-  const cartData = useSelector((state) => state.cart.cartData);
+  }, [cartInfoList]);
   const caculatePrice = () => {
     if (cartInfoList.length !== 0) {
       const priceList = cartInfoList.map((item) => item.price * item.quantity);
@@ -152,14 +149,14 @@ const Cart = () => {
       <h1>장바구니</h1>
       <div className="cart">
         {!apiError ? (
-          cartData.length === 0 ? (
+          cartInfoList.length === 0 ? (
             <div className="cart__list--empty">
               <span>고객님의 장바구니가 비어있습니다.</span>
               <span onClick={() => navigate("/")}>계속 쇼핑하기</span>
             </div>
           ) : (
             <div className="cart__list">
-              {cartData.map((item, index) => (
+              {cartInfoList.map((item, index) => (
                 <CartCard key={index} item={item} />
               ))}
             </div>
@@ -179,19 +176,23 @@ const Cart = () => {
           <div className="cart__order-price">
             <span>주문 가격</span>
             <span>
-              ₩ {cartData.length !== 0 ? totalPrice.toLocaleString() : 0}
+              ₩ {cartInfoList.length !== 0 ? totalPrice.toLocaleString() : 0}
             </span>
           </div>
           <div className="cart__delivery-fee">
             <span>배송</span>
-            <span>₩ {cartData.length !== 0 ? (2500).toLocaleString() : 0}</span>
+            <span>
+              ₩ {cartInfoList.length !== 0 ? (2500).toLocaleString() : 0}
+            </span>
           </div>
           <div className="line"></div>
           <div className="cart__total-price">
             <span>합계</span>
             <span>
               ₩{" "}
-              {cartData.length !== 0 ? (totalPrice + 2500).toLocaleString() : 0}
+              {cartInfoList.length !== 0
+                ? (totalPrice + 2500).toLocaleString()
+                : 0}
             </span>
           </div>
           <button className="cart__payment-button" onClick={payment}>

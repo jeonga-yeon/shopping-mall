@@ -121,7 +121,14 @@ const ProductDetail = () => {
     event.preventDefault();
     dispatch({
       type: "CART",
-      payload: { id: product?.id, quantity, size, price: product?.price },
+      payload: {
+        id: product?.id,
+        image: product?.img,
+        title: product?.title,
+        quantity,
+        size,
+        price: product?.price,
+      },
     });
     if (window.confirm("장바구니에 담았습니다. 장바구니로 이동하시겠습니까?")) {
       navigate("/cart");

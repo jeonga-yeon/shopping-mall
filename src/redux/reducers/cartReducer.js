@@ -1,6 +1,5 @@
 let initialState = {
   cartInfoList: [],
-  cartData: [],
   error: "",
 };
 
@@ -14,6 +13,8 @@ function cartReducer(state = initialState, action) {
           ...state.cartInfoList,
           {
             id: payload.id,
+            image: payload.image,
+            title: payload.title,
             quantity: payload.quantity,
             size: payload.size,
             price: payload.price,
@@ -26,18 +27,12 @@ function cartReducer(state = initialState, action) {
         cartInfoList: [
           ...state.cartInfoList.filter((item) => item.id !== payload.id),
         ],
-        cartData: [...state.cartData.filter((item) => item.id !== payload.id)],
       };
     case "DELETE_CART_ALL":
       return {
         ...state,
         cartInfoList: [],
-        cartData: [],
       };
-    case "CART_SUCCESS":
-      return { ...state, cartData: payload.cartData };
-    case "CART_ERROR":
-      return { ...state, error: payload.error };
     default:
       return { ...state };
   }
