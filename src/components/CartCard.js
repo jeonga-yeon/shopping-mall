@@ -96,8 +96,7 @@ const CartCard = ({ item }) => {
   }, [cartInfoList, idList]);
   const heartData = useSelector((state) => state.heart.heartData);
   const heartIdList = heartData.map((item) => item.id);
-  const cartData = useSelector((state) => state.cart.cartData);
-  const cartIdList = cartData.map((item) => item.id);
+  const cartIdList = cartInfoList.map((item) => item.id);
   return (
     <Wrapper>
       <div className="cart__item">
