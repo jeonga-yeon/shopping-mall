@@ -178,7 +178,9 @@ const Cart = () => {
           )}
           <div className="cart__order-price">
             <span>주문 가격</span>
-            <span>₩ {totalPrice.toLocaleString()}</span>
+            <span>
+              ₩ {cartData.length !== 0 ? totalPrice.toLocaleString() : 0}
+            </span>
           </div>
           <div className="cart__delivery-fee">
             <span>배송</span>
