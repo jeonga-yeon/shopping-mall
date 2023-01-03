@@ -10,13 +10,18 @@ import { productAction } from "../redux/actions/productAction";
 const Wrapper = styled.div`
   margin: 80px 200px;
   @media screen and (max-width: 500px) {
-    margin-left: 210px;
+    margin-left: 220px;
+    margin-bottom: 350px;
     .products {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      .search-result {
+        display: flex;
+        width: 200px;
+      }
     }
   }
 `;
@@ -56,7 +61,7 @@ const ProductsAll = () => {
               </li>
             ))
           ) : (
-            <span>검색 결과가 없습니다.</span>
+            <span className="search-result">검색 결과가 없습니다.</span>
           )
         ) : (
           apiError
