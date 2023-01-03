@@ -133,7 +133,7 @@ const Cart = () => {
   useEffect(() => {
     dispatch(cartAction.cartList(cartInfoList));
     caculatePrice();
-  }, [cartInfoList]);
+  }, []);
   const cartData = useSelector((state) => state.cart.cartData);
   const caculatePrice = () => {
     if (cartInfoList.length !== 0) {
