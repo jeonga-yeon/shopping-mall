@@ -48,6 +48,7 @@ const Wrapper = styled.div`
     }
   }
   @media screen and (max-width: 970px) {
+    padding-top: 50px;
     .footer__category {
       display: none;
     }
