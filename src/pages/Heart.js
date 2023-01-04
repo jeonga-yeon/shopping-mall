@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   margin: 0px 200px;
   h1 {
     margin: 50px;
+    white-space: nowrap;
     font-size: 35px;
     text-align: center;
   }
