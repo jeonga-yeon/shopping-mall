@@ -25,7 +25,6 @@ const Menu = styled.div`
     }
     .mobile-menu {
       width: 100%;
-      height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -41,6 +40,7 @@ const Menu = styled.div`
         }
       }
       .mobile-menu__nav {
+        height: 100%;
         .mobile-menu__icon,
         h1 {
           margin-left: 30px;
@@ -99,6 +99,7 @@ const Menu = styled.div`
               position: fixed;
               left: 26px;
               z-index: 10;
+              bottom: 6.5%;
             }
             input {
               position: fixed;
@@ -108,6 +109,7 @@ const Menu = styled.div`
               border-bottom: 1px solid black;
               background-color: #dfb887;
               padding-left: 25px;
+              bottom: 5%;
               &:focus {
                 outline: none;
               }
