@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   @media screen and (max-width: 600px) {
     margin-bottom: 350px;
     .products {
+      margin: 0px;
       display: flex;
       flex-direction: column;
       justify-content: center;

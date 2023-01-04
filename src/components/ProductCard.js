@@ -80,9 +80,10 @@ const ProductCard = ({ item }) => {
           onMouseEnter={() => setHeart("fullHeart")}
           icon={fullHeart}
           className="cart__heart--full"
-          onClick={() =>
-            dispatch({ type: "DELETE_HEART", payload: { id: item?.id } })
-          }
+          onClick={() => {
+            setHeart("heart");
+            dispatch({ type: "DELETE_HEART", payload: { id: item?.id } });
+          }}
         />
       ) : (
         <FontAwesomeIcon
@@ -90,7 +91,10 @@ const ProductCard = ({ item }) => {
           onMouseLeave={() => setHeart("heart")}
           icon={heart === "heart" ? normalHeart : fullHeart}
           className="cart__heart--normal"
-          onClick={() => dispatch({ type: "HEART", payload: { id: item?.id } })}
+          onClick={() => {
+            setHeart("fullHeart");
+            dispatch({ type: "HEART", payload: { id: item?.id } });
+          }}
         />
       )}
     </Container>
