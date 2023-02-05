@@ -32,7 +32,7 @@ https://my-shop.herokuapp.com/
 
 ![heart](https://user-images.githubusercontent.com/76932302/216819585-c16e4ce9-3068-4103-972a-b2b40e1bfe79.gif)
 
-✅ 장바구니
+✅ 장바구니  
 수량과 사이즈를 결정해서 장바구니에 담을 수 있다. 로그인을 한 상태에서만 결제를 진행할 수 있다.
 
 ![cart](https://user-images.githubusercontent.com/76932302/216821389-748a3025-dfb2-4cda-842c-12b82daf5dcb.gif)
@@ -41,31 +41,31 @@ https://my-shop.herokuapp.com/
 
     - src
       - components
-        * CartCard.js
-        * Footer.js
-        * Navbar.js
-        * ProductCard.js
+        - CartCard.js
+        - Footer.js
+        - Navbar.js
+        - ProductCard.js
       - pages
-        * Cart.js
-        * Heart.js
-        * Join.js
-        * Login.js
-        * ProductDetail.js
-        * ProductsAll.js
+        - Cart.js
+        - Heart.js
+        - Join.js
+        - Login.js
+        - ProductDetail.js
+        - ProductsAll.js
       - redux
         - actions
-          * heartAction.js
-          * productAction.js
+          - heartAction.js
+          - productAction.js
         - reducers
-          * authenticateReducer.js
-          * cartReducer.js
-          * heartReducer.js
-          * index.js
-          * productReducer.js
-          * userReducer.js
-        * store.js
-      * App.js
-      * index.tsx
+          - authenticateReducer.js
+          - cartReducer.js
+          - heartReducer.js
+          - index.js
+          - productReducer.js
+          - userReducer.js
+        - store.js
+      - App.js
+      - index.tsx
 
 <br />
 
