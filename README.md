@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# 쇼핑몰
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+H&M 클론코딩  
+https://my-shop.herokuapp.com/
+<br />
+<br />
 
-## Available Scripts
+## 주요 기능
 
-In the project directory, you can run:
+✅ 전체 상품 화면  
+모든 상품이 나열되어 있고 하트를 누르면 즐겨찾기에 저장된다.
+![main](https://user-images.githubusercontent.com/76932302/216816671-9aee9000-6acf-4ac0-a472-b99329e15c49.gif)
 
-### `npm start`
+✅ 상품 상세 페이지  
+즐겨찾기에 저장할 수 있고 수량과 사이즈를 선택해 장바구니에 담을 수 있다.
+![detail](https://user-images.githubusercontent.com/76932302/216816977-c30af915-5160-427f-9102-03c74944c376.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ 회원가입
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![join](https://user-images.githubusercontent.com/76932302/216817258-6d41f955-14fa-475d-9e36-5b24fc22715d.gif)
 
-### `npm test`
+✅ 로그인
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![shoplogin](https://user-images.githubusercontent.com/76932302/216819101-2c0bcbee-5bcc-4d8d-8ec1-7224b70085cd.gif)
 
-### `npm run build`
+✅ 상품 검색
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![search](https://user-images.githubusercontent.com/76932302/216819291-2f7b650c-6f01-4296-8ca9-5bb7d73a9e2e.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✅ 즐겨찾기  
+하트를 누르면 즐겨찾기에 추가되고 다시 한 번 더 누르면 삭제된다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![heart](https://user-images.githubusercontent.com/76932302/216819585-c16e4ce9-3068-4103-972a-b2b40e1bfe79.gif)
 
-### `npm run eject`
+✅ 장바구니
+수량과 사이즈를 결정해서 장바구니에 담을 수 있다. 로그인을 한 상태에서만 결제를 진행할 수 있다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![cart](https://user-images.githubusercontent.com/76932302/216821389-748a3025-dfb2-4cda-842c-12b82daf5dcb.gif)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 파일구조
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    - src
+      - components
+        * CartCard.js
+        * Footer.js
+        * Navbar.js
+        * ProductCard.js
+      - pages
+        * Cart.js
+        * Heart.js
+        * Join.js
+        * Login.js
+        * ProductDetail.js
+        * ProductsAll.js
+      - redux
+        - actions
+          * heartAction.js
+          * productAction.js
+        - reducers
+          * authenticateReducer.js
+          * cartReducer.js
+          * heartReducer.js
+          * index.js
+          * productReducer.js
+          * userReducer.js
+        * store.js
+      * App.js
+      * index.tsx
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br />
 
-## Learn More
+사용 기술
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+React, Redux, styled-components
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br />
