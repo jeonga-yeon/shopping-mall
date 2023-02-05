@@ -69,7 +69,7 @@ https://my-shop.herokuapp.com/
 
 <br />
 
-사용 기술
+## 사용 기술
 
 ```
 React, Redux, styled-components
