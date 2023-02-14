@@ -1,7 +1,7 @@
 # 쇼핑몰
 
 H&M 클론코딩  
-https://my-shop.herokuapp.com/
+https://jeonga-yeon.github.io/shopping-mall/
 <br />
 <br />
 
