@@ -2,9 +2,9 @@
   "products": [
     {
       "id": 0,
-      "img": "https://lp2.hm.com/hmgoepprod?set=source[/ec/ef/ecef9d77c56c519e24a76b83331ae2c18f73f50d.jpg],origin[dam],category[],type[LOOKBOOK],res[y],hmver[1]&call=url[file:/product/main]",
-      "title": "벨티드 트윌 코트",
-      "price": 99900,
+      "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F98%2F40%2F9840e2e3f77186a93e908716f3fb1633506dcc63.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+      "title": "데님 재킷",
+      "price": 39900,
       "new": true,
       "size": ["S", "M", "L"]
     },
