@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/shopping-mall/static/js/main.aa65f9f6.js",
+    "main.js": "/shopping-mall/static/js/main.a68b6c86.js",
     "index.html": "/shopping-mall/index.html",
-    "main.aa65f9f6.js.map": "/shopping-mall/static/js/main.aa65f9f6.js.map"
+    "main.a68b6c86.js.map": "/shopping-mall/static/js/main.a68b6c86.js.map"
   },
   "entrypoints": [
-    "static/js/main.aa65f9f6.js"
+    "static/js/main.a68b6c86.js"
   ]
 }
