@@ -13,12 +13,12 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<ProductsAll />} />
-        <Route path="/join" element={<Join />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/heart" element={<Heart />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/shopping-mall/" element={<ProductsAll />} />
+        <Route path="/shopping-mall/join" element={<Join />} />
+        <Route path="/shopping-mall/login" element={<Login />} />
+        <Route path="/shopping-mall/heart" element={<Heart />} />
+        <Route path="/shopping-mall/cart" element={<Cart />} />
+        <Route path="/shopping-mall/product/:id" element={<ProductDetail />} />
       </Routes>
       <Footer />
     </div>
