@@ -241,16 +241,16 @@ const Navbar = () => {
   const authenticate = useSelector((state) => state.auth.authenticate);
   const [searchKeyword, setSearchKeyword] = useState("");
   const goToLogin = () => {
-    navigate("/login");
+    navigate("/shopping-mall/login");
   };
   const goToLogout = () => {
     dispatch({
       type: "LOGOUT_SUCCESS",
     });
-    navigate("/");
+    navigate("/shopping-mall/");
   };
   const goToHeart = () => {
-    navigate("/heart");
+    navigate("/shopping-mall/heart");
   };
   const search = (event) => {
     if (event.key === "Enter") {
@@ -258,7 +258,7 @@ const Navbar = () => {
       if (keyword === "") {
         return;
       } else {
-        navigate(`/?q=${keyword}`);
+        navigate(`/shopping-mall/?q=${keyword}`);
       }
     }
   };
@@ -275,7 +275,7 @@ const Navbar = () => {
               <FontAwesomeIcon icon={faEllipsisH} className="ellipsis" />
             </li>
           </ul>
-          <Link to="/" onClick={() => setSearchKeyword("")}>
+          <Link to="/shopping-mall/" onClick={() => setSearchKeyword("")}>
             <h1>My Shop</h1>
           </Link>
           <ul className="login-menu">
@@ -283,7 +283,7 @@ const Navbar = () => {
               <FontAwesomeIcon icon={faHeart} className="menu-icon" />
               <span>즐겨찾기</span>
             </li>
-            <li onClick={() => navigate("/cart")}>
+            <li onClick={() => navigate("/shopping-mall/cart")}>
               <FontAwesomeIcon icon={faShoppingCart} className="menu-icon" />
               <span>장바구니({cartInfoList.length})</span>
             </li>
@@ -327,7 +327,7 @@ const Navbar = () => {
             className="mobile-menu__icon"
             onClick={() => setMenu(true)}
           />
-          <Link to="/" onClick={() => setSearchKeyword("")}>
+          <Link to="/shopping-mall/" onClick={() => setSearchKeyword("")}>
             <h1>My Shop</h1>
           </Link>
           {menu ? (
@@ -365,7 +365,10 @@ const Navbar = () => {
           <li onClick={goToHeart}>
             <FontAwesomeIcon icon={faHeart} />
           </li>
-          <li onClick={() => navigate("/cart")} className="cart__amount">
+          <li
+            onClick={() => navigate("/shopping-mall/cart")}
+            className="cart__amount"
+          >
             <FontAwesomeIcon icon={faShoppingCart} />
             {cartInfoList.length !== 0 ? (
               <div className="amount__icon">

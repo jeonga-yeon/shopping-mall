@@ -73,7 +73,7 @@ const Join = () => {
     } else {
       const user = { name, id, password };
       dispatch({ type: "JOIN_SUCCESS", payload: { user } });
-      navigate("/");
+      navigate("/shopping-mall/");
     }
   };
   return (

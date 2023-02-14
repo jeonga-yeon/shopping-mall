@@ -119,13 +119,13 @@ const Cart = () => {
   const authenticate = useSelector((state) => state.auth.authenticate);
   const payment = () => {
     if (!authenticate) {
-      navigate("/login");
+      navigate("/shopping-mall/login");
     } else {
       window.alert("결제가 완료되었습니다.");
       dispatch({
         type: "DELETE_CART_ALL",
       });
-      navigate("/");
+      navigate("/shopping-mall/");
     }
   };
   const cartInfoList = useSelector((state) => state.cart.cartInfoList);
@@ -152,7 +152,9 @@ const Cart = () => {
           cartInfoList.length === 0 ? (
             <div className="cart__list--empty">
               <span>고객님의 장바구니가 비어있습니다.</span>
-              <span onClick={() => navigate("/")}>계속 쇼핑하기</span>
+              <span onClick={() => navigate("/shopping-mall/")}>
+                계속 쇼핑하기
+              </span>
             </div>
           ) : (
             <div className="cart__list">
@@ -169,7 +171,10 @@ const Cart = () => {
           {authenticate ? (
             ""
           ) : (
-            <button className="cart__login" onClick={() => navigate("/login")}>
+            <button
+              className="cart__login"
+              onClick={() => navigate("/shopping-mall/login")}
+            >
               로그인
             </button>
           )}

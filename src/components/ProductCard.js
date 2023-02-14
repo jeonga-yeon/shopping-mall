@@ -59,7 +59,7 @@ const ProductCard = ({ item }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const goToDetail = () => {
-    navigate(`/product/${item.id}`);
+    navigate(`/shopping-mall/product/${item.id}`);
   };
   const idList = useSelector((state) => state.heart.idList);
   useEffect(() => {

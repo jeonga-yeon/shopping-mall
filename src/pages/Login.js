@@ -84,7 +84,7 @@ const Login = () => {
       setEmailError("");
     } else {
       dispatch({ type: "LOGIN_SUCCESS", payload: { id, password } });
-      navigate("/");
+      navigate("/shopping-mall/");
     }
   };
   return (
@@ -112,7 +112,7 @@ const Login = () => {
         <span className="error">{passwordError ? passwordError : ""}</span>
         <div className="join">
           <button type="submit">로그인</button>
-          <span onClick={() => navigate("/join")}>회원가입</span>
+          <span onClick={() => navigate("/shopping-mall/join")}>회원가입</span>
         </div>
       </Form>
     </Wrapper>

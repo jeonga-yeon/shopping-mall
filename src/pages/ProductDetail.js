@@ -100,12 +100,12 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const handlePayment = () => {
     if (!authenticate) {
-      navigate("/login");
+      navigate("/shopping-mall/login");
     } else if (!size || !quantity) {
       window.alert("수량과 사이즈를 선택해주세요.");
     } else {
       window.alert("결제가 완료되었습니다.");
-      navigate("/");
+      navigate("/shopping-mall/");
     }
   };
   useEffect(() => {
@@ -131,7 +131,7 @@ const ProductDetail = () => {
       },
     });
     if (window.confirm("장바구니에 담았습니다. 장바구니로 이동하시겠습니까?")) {
-      navigate("/cart");
+      navigate("/shopping-mall/cart");
     } else {
       return;
     }

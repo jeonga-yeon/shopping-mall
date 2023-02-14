@@ -91,13 +91,13 @@ const Footer = () => {
         <ul>
           <li className="category__title">지금 멤버십에 가입하세요!</li>
           <li>지금 가입하시고 10% 할인 받으세요</li>
-          <li onClick={() => navigate("/join")}>
+          <li onClick={() => navigate("/shopping-mall/join")}>
             지금 가입하기
             <FontAwesomeIcon icon={faArrowRight} className="icon" />
           </li>
         </ul>
       </div>
-      <div className="footer__logo" onClick={() => navigate("/")}>
+      <div className="footer__logo" onClick={() => navigate("/shopping-mall/")}>
         <span>My Shop</span>
       </div>
     </Wrapper>

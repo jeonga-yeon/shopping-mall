@@ -99,7 +99,7 @@ const CartCard = ({ item }) => {
     <Wrapper>
       <div className="cart__item">
         <div
-          onClick={() => navigate(`/product/${item.id}`)}
+          onClick={() => navigate(`/shopping-mall/product/${item.id}`)}
           className="cart__item--img"
         >
           <img src={item.image} width={80} />
