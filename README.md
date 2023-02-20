@@ -37,6 +37,93 @@ https://jeonga-yeon.github.io/shopping-mall/
 
 ![cart](https://user-images.githubusercontent.com/76932302/216821389-748a3025-dfb2-4cda-842c-12b82daf5dcb.gif)
 
+<br />
+
+## 문제 해결
+
+1. 로컬 스토리지에 redux state 저장하기
+
+   redux-persist를 설치
+
+   ```
+   npm install redux-persist
+   ```
+
+   persist의 설정을 작성
+
+   ```
+   const persistConfig = {
+      key: "root",
+      storage,
+      whiteList: [
+      "userReducer",
+      "authenticateReducer",
+      "heartReducer",
+      "cartReducer",
+      ],
+    };
+   ```
+
+   persistConfig와 rootReducer를 내보낸다.
+
+   ```
+   const rootReducer = combineReducers({
+      user: userReducer,
+      auth: authenticateReducer,
+      product: productReducer,
+      heart: heartReducer,
+      cart: cartReducer,
+    });
+
+    export default persistReducer(persistConfig, rootReducer);
+   ```
+
+   createStore에 persistStore를 넣는다. persistor는 localStorage를 관리한다.
+
+   ```
+   import store from "./redux/store";
+   import { persistStore } from "redux-persist";
+
+   const persistor = persistStore(store);
+
+   <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
+   </Provider>
+   ```
+
+2. 즐겨찾기 기능 적용
+
+   하트를 누른 상품들을 idList에 넣고 product api에서 idList에 있는 id를 가진 것들로 객체를 간추림 -> 그러나 바로 적용되지 않음
+
+   ```
+    onClick={() => {
+      dispatch({ type: "HEART", payload: { id: item?.id } });
+          dispatch(heartAction.heartList(idList));
+    }}
+   ```
+
+   이 코드가 잘못되었다. onClick 함수에는
+
+   ```
+   dispatch({ type: "HEART", payload: { id: item?.id } })}
+   ```
+
+   이 코드만 남겨두고
+
+   ```
+    useEffect(() => {
+      dispatch(heartAction.heartList(idList));
+    }, [idList]);
+
+   ```
+
+   useEffect에 코드를 옮겨주니 해결됐다.
+
+   <br />
+   <br />
+
 ## 파일구조
 
     - src
